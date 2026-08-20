@@ -1,0 +1,66 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Containerpak/cpak/v2/schema/manifest-v2.json",
+  "manifest_version": "2.0",
+  "name": "Unreal Engine",
+  "description": "Create games and interactive experiences with Unreal Engine.",
+  "version": "5.8.0",
+  "image": "ghcr.io/epicgames/unreal-engine:dev-slim-5.8.0",
+  "binaries": [
+    "/home/ue4/UnrealEngine/Engine/Binaries/Linux/UnrealEditor",
+    "/home/ue4/UnrealEngine/Engine/Build/BatchFiles/RunUAT.sh"
+  ],
+  "desktop_entries": [
+    "/usr/share/applications/com.epicgames.UnrealEngine.desktop"
+  ],
+  "dependencies": [],
+  "addons": [],
+  "idle_time": 0,
+  "override": {
+    "socketX11": true,
+    "socketWayland": true,
+    "socketPulseAudio": true,
+    "socketSessionBus": true,
+    "socketSystemBus": false,
+    "socketSshAgent": true,
+    "socketCups": false,
+    "socketGpgAgent": true,
+    "socketAtSpiBus": true,
+    "socketBluetooth": false,
+    "deviceDri": true,
+    "deviceKvm": false,
+    "deviceShm": true,
+    "deviceAlsa": false,
+    "deviceVideo": false,
+    "deviceFuse": false,
+    "deviceTun": false,
+    "deviceUsb": true,
+    "deviceSerial": false,
+    "deviceInput": false,
+    "deviceTTY": false,
+    "deviceAll": false,
+    "notification": true,
+    "openURI": true,
+    "hostApplications": true,
+    "filesystem": [
+      {"path": "home", "access": "read-write"}
+    ],
+    "env": [],
+    "network": true,
+    "process": false,
+    "userNamespaces": true,
+    "memoryMaxMB": 0,
+    "cpuQuota": 0,
+    "pidsMax": 0,
+    "asRoot": false,
+    "allowedHostCommands": []
+  },
+  "runtime_sources": [
+    {
+      "name": "unreal-engine-cpak-integration_1.0.0.tar.gz",
+      "url": "https://github.com/Containerpak/unreal-engine/releases/download/integration-v1.0.0/unreal-engine-cpak-integration_1.0.0.tar.gz",
+      "sha256": "680f9e90767d415cdadf92b9fd82ab800a676c0f646a0f899b24bfe9c920756c",
+      "size": 1005,
+      "installer": "tar"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Unreal Engine 5.8
+GenericName=Game Engine
+Comment=Create games and interactive experiences
+Exec=/home/ue4/UnrealEngine/Engine/Binaries/Linux/UnrealEditor %F
+Icon=unreal-engine
+Terminal=false
+Type=Application
+Categories=Development;IDE;
+StartupNotify=true
+StartupWMClass=UnrealEditor
+

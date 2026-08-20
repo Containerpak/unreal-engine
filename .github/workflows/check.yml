@@ -1,0 +1,33 @@
+name: Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+
+      - name: Build integration package
+        run: make integration
+
+      - name: Verify integration package
+        run: |
+          package="build/$(jq -r '.runtime_sources[0].name' cpak.json)"
+          expected_hash="$(jq -r '.runtime_sources[0].sha256' cpak.json)"
+          expected_size="$(jq -r '.runtime_sources[0].size' cpak.json)"
+          test "$(sha256sum "$package" | cut -d' ' -f1)" = "$expected_hash"
+          test "$(stat -c '%s' "$package")" = "$expected_size"
+
+      - name: Validate manifest
+        run: |
+          curl -fsSLo cpak https://github.com/Containerpak/cpak/releases/latest/download/cpak-linux-amd64
+          chmod +x cpak
+          ./cpak validate cpak.json
