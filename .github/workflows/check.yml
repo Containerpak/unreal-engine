@@ -30,7 +30,7 @@ jobs:
 
       - name: Validate manifest
         run: |
-          curl -fsSLo cpak https://github.com/Containerpak/cpak/releases/download/v2.10.4/cpak-linux-amd64
+          curl -fsSLo cpak https://github.com/Containerpak/cpak/releases/download/v2.10.16/cpak-linux-amd64
           echo '59a3a8e615df67b5ec118fa7e298ea9fbfa3157ca9507c1c72a5bec024537a40  cpak' | sha256sum -c -
           chmod +x cpak
           ./cpak validate cpak.json
